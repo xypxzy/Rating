@@ -15,6 +15,8 @@ function Course({ menu, page, products }: CourseProps): JSX.Element {
 
 export default withLayout(Course);
 
+//GetStaticPaths
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data: menu } = await axios.post<MenuItem[]>(
     process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find',
@@ -27,6 +29,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: true,
   };
 };
+
+//GetStaticProps
 
 export const getStaticProps: GetStaticProps<CourseProps> = async ({
   params,
