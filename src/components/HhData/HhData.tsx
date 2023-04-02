@@ -4,7 +4,6 @@ import { Card } from '../Card/Card';
 import RateItem from './rate.svg';
 import styles from './HhData.module.css';
 import { priceRu } from '../../../helper/helper';
-import { Advantages } from '../Advantages/Advantages';
 
 export const HhData = ({
   count,
@@ -47,7 +46,6 @@ export const HhData = ({
           </div>
         </div>
       </Card>
-      <Advantages />
     </div>
   );
 };
