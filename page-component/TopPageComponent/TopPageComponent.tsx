@@ -28,7 +28,6 @@ export const TopPageComponent = ({
       sort: SortEnum.Rating,
     }
   );
-
   const setSort = (sort: SortEnum) => {
     dispatchSort({ type: sort });
   };

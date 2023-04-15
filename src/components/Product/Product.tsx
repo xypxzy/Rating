@@ -28,6 +28,11 @@ export const Product = motion(
         });
       };
 
+      const variants = {
+        visible: { opacity: 1, height: 'auto' },
+        hidden: { opacity: 0, height: 0 },
+      };
+
       return (
         <div className={className} {...props} ref={ref}>
           <Card color={'white'} className={styles.product}>
@@ -112,22 +117,28 @@ export const Product = motion(
               </Button>
             </div>
           </Card>
-          <Card
-            color='blue'
-            className={cn(styles.reviews, {
-              [styles.opened]: isReviewOpened,
-              [styles.closed]: !isReviewOpened,
-            })}
-            ref={reviewRef}
+          <motion.div
+            variants={variants}
+            animate={isReviewOpened ? 'visible' : 'hidden'}
+            initial='hidden'
           >
-            {product.reviews.map((userReview) => (
-              <div key={userReview._id}>
-                <Review review={userReview} />
-                <Divider />
-              </div>
-            ))}
-            <ReviewForm productId={product._id} />
-          </Card>
+            <Card
+              color='blue'
+              className={cn(styles.reviews, {
+                [styles.opened]: isReviewOpened,
+                [styles.closed]: !isReviewOpened,
+              })}
+              ref={reviewRef}
+            >
+              {product.reviews.map((userReview) => (
+                <div key={userReview._id}>
+                  <Review review={userReview} />
+                  <Divider />
+                </div>
+              ))}
+              <ReviewForm productId={product._id} />
+            </Card>
+          </motion.div>
         </div>
       );
     }
